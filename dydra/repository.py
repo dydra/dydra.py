@@ -17,3 +17,6 @@ class Repository(dydra.Resource):
 
   def count(self):
     return self.client.call('repository.count', self.name)
+
+  def clear(self):
+    return self.client.call('repository.clear', self.name)
