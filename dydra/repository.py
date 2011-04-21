@@ -11,3 +11,9 @@ class Repository(dydra.Resource):
 
   def __repr__(self):
     return "dydra.Repository('%s')" % (self.name)
+
+  def __len__(self):
+    return self.count()
+
+  def count(self):
+    return self.client.call('repository.count', self.name)

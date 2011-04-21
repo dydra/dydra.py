@@ -20,3 +20,9 @@ class Client(object):
 
   def __repr__(self):
     return "dydra.Client(url='%s')" % (self.url)
+
+  def __call__(self, method, *args):
+    return getattr(self.rpc, 'dydra.' + method)(*args)
+
+  def call(self, method, *args):
+    return self.__call__(method, *args)
