@@ -1,6 +1,7 @@
 .DS_Store
-.tmp
-build
-dist
-tmp
+.tmp/
+build/
+dist/
+tmp/
+*.egg-info
 *.pyc
