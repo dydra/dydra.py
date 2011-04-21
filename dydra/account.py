@@ -11,3 +11,6 @@ class Account(dydra.Resource):
 
   def __repr__(self):
     return "dydra.Account('%s')" % (self.name)
+
+  def __getitem__(self, key):
+    return dydra.Repository(self.name + '/' + str(key))
