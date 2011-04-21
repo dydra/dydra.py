@@ -9,7 +9,7 @@ setup(
   long_description = open('README').read(),
   author           = 'Dydra.com',
   author_email     = 'dydra@googlegroups.com', # @see http://groups.google.com/group/dydra
-  url              = 'http://docs.dydra.org/sdk/python',
+  url              = 'http://docs.dydra.com/sdk/python',
   download_url     = 'http://pypi.python.org/pypi/dydra',
   packages         = ['dydra'],
   classifiers      = [
