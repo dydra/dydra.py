@@ -1,4 +1,5 @@
 import dydra
+from time import sleep
 
 class Job(dydra.Resource):
   """A running job/task on Dydra.com."""
@@ -35,7 +36,13 @@ class Job(dydra.Resource):
     self.client.call('job.status', self.uuid)
 
   def wait(self, **kwargs):
-    raise NotImplementedError
+    delay = 0.5 # seconds
+    if kwargs.has_key('delay'):
+      delay = float(kwargs['delay'])
+    while not self.is_done():
+      sleep(delay)
+    return self
 
   def abort(self):
-    raise NotImplementedError
+    self.client.call('job.abort', self.uuid)
+    return self
