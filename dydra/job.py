@@ -13,19 +13,23 @@ class Job(dydra.Resource):
     return "dydra.Job('%s')" % (self.uuid)
 
   def is_pending(self):
-    raise NotImplementedError
+    return self.status() == 'pending'
 
   def is_running(self):
-    raise NotImplementedError
-
-  def is_done(self):
-    raise NotImplementedError
+    return self.status() == 'running'
 
   def is_completed(self):
-    raise NotImplementedError
+    return self.status() == 'completed'
+
+  def is_failed(self):
+    return self.status() == 'failed'
 
   def is_aborted(self):
-    raise NotImplementedError
+    return self.status() == 'aborted'
+
+  def is_done(self):
+    status = self.status()
+    return status == 'completed' or status == 'failed' or status == 'aborted'
 
   def status(self):
     self.client.call('job.status', self.uuid)
