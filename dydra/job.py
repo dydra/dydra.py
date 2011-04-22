@@ -28,7 +28,7 @@ class Job(dydra.Resource):
     raise NotImplementedError
 
   def status(self):
-    raise NotImplementedError
+    self.client.call('job.status', self.uuid)
 
   def wait(self, **kwargs):
     raise NotImplementedError
