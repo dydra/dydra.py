@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from distutils.core import setup
+from setuptools import setup
 from dydra import __version__
 
 setup(
@@ -13,7 +13,7 @@ setup(
   download_url     = 'http://pypi.python.org/pypi/dydra',
   packages         = ['dydra'],
   classifiers      = [
-    'Development Status :: 1 - Planning',
+    'Development Status :: 2 - Pre-Alpha',
     'Environment :: Console',
     'Intended Audience :: Developers',
     'License :: Public Domain',
@@ -24,4 +24,5 @@ setup(
     'Topic :: Software Development :: Libraries',
   ],
   license          = 'Public Domain',
+  install_requires = ['rdflib>=3.0.0'],
 )
