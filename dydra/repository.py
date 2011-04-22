@@ -19,4 +19,4 @@ class Repository(dydra.Resource):
     return self.client.call('repository.count', self.name)
 
   def clear(self):
-    return self.client.call('repository.clear', self.name)
+    return dydra.Job(self.client.call('repository.clear', self.name), client=self.client)
