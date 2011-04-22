@@ -6,7 +6,6 @@ setup(
   name             = 'dydra',
   version          = __version__,
   description      = 'Dydra.com software development kit (SDK) for Python.',
-  long_description = open('README').read(),
   author           = 'Dydra.com',
   author_email     = 'dydra@googlegroups.com', # @see http://groups.google.com/group/dydra
   url              = 'http://docs.dydra.com/sdk/python',
