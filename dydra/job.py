@@ -29,11 +29,10 @@ class Job(dydra.Resource):
     return self.status() == 'aborted'
 
   def is_done(self):
-    status = self.status()
-    return status == 'completed' or status == 'failed' or status == 'aborted'
+    return self.client.call('job.done', self.uuid)
 
   def status(self):
-    self.client.call('job.status', self.uuid)
+    return self.client.call('job.status', self.uuid)
 
   def wait(self, **kwargs):
     delay = 0.5 # seconds

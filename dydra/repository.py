@@ -20,3 +20,11 @@ class Repository(dydra.Resource):
 
   def clear(self):
     return dydra.Job(self.client.call('repository.clear', self.name), client=self.client)
+
+  def import_from_url(self, url, **kwargs):
+    url, context, base_uri = str(url), '', ''
+    if kwargs.has_key('context') and kwargs['context']:
+      context = str(kwargs['context'])
+    if kwargs.has_key('base_uri') and kwargs['base_uri']:
+      base_uri = str(kwargs['base_uri'])
+    return dydra.Job(self.client.call('repository.import', self.name, url, context, base_uri), client=self.client)
