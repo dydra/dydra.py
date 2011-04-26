@@ -15,6 +15,12 @@ class Repository(dydra.Resource):
   def __len__(self):
     return self.count()
 
+  def create(self):
+    return self.client.call('repository.create', self.name)
+
+  def destroy(self):
+    return self.client.call('repository.destroy', self.name)
+
   def count(self):
     return self.client.call('repository.count', self.name)
 
