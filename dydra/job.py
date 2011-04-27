@@ -1,15 +1,25 @@
 import dydra
 from time import sleep
 
+##
+# Represents a Dydra.com job.
+#
+# @see http://docs.dydra.com/sdk/python
 class Job(dydra.Resource):
-  """A running job/task on Dydra.com."""
+  """Represents a Dydra.com job."""
 
+  ##
+  # (Attribute) The job UUID.
   uuid = None
 
+  ##
+  # @param uuid A valid job UUID.
   def __init__(self, uuid, **kwargs):
     self.uuid = str(uuid)
     super(Job, self).__init__(self.uuid, **kwargs) # FIXME
 
+  ##
+  # @return A string representation of this object.
   def __repr__(self):
     return "dydra.Job('%s')" % (self.uuid)
 
