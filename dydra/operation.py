@@ -2,11 +2,11 @@ import dydra
 from time import sleep
 
 ##
-# Represents a Dydra.com job.
+# Represents a Dydra.com operation.
 #
 # @see http://docs.dydra.com/sdk/python
-class Job(dydra.Resource):
-  """Represents a Dydra.com job."""
+class Operation(dydra.Resource):
+  """Represents a Dydra.com operation."""
 
   STATUS_UNKNOWN   = 'unknown'
   STATUS_PENDING   = 'pending'
@@ -16,62 +16,62 @@ class Job(dydra.Resource):
   STATUS_ABORTED   = 'aborted'
 
   ##
-  # (Attribute) The job UUID.
+  # (Attribute) The operation UUID.
   uuid = None
 
   ##
-  # Initializes the job instance.
+  # Initializes the operation instance.
   #
-  # @param uuid A valid job UUID.
+  # @param uuid A valid operation UUID.
   def __init__(self, uuid, **kwargs):
-    super(Job, self).__init__(self.uuid, **kwargs) # FIXME
+    super(Operation, self).__init__(self.uuid, **kwargs) # FIXME
     self.uuid = str(uuid)
 
   ##
-  # Returns a string representation of the job UUID.
+  # Returns a string representation of the operation UUID.
   #
   # @return A string representation of this object.
   def __repr__(self):
-    return "dydra.Job('%s')" % (self.uuid)
+    return "dydra.Operation('%s')" % (self.uuid)
 
   ##
-  # Returns `True` if this job is currently pending to run.
+  # Returns `True` if this operation is currently pending to run.
   def is_pending(self):
     return self.status() == STATUS_PENDING
 
   ##
-  # Returns `True` if this job is currently running.
+  # Returns `True` if this operation is currently running.
   def is_running(self):
     return self.status() == STATUS_RUNNING
 
   ##
-  # Returns `True` if this job has already completed.
+  # Returns `True` if this operation has already completed.
   def is_completed(self):
     return self.status() == STATUS_COMPLETED
 
   ##
-  # Returns `True` if this job failed for some reason.
+  # Returns `True` if this operation failed for some reason.
   def is_failed(self):
     return self.status() == STATUS_FAILED
 
   ##
-  # Returns `True` if this job was aborted for any reason.
+  # Returns `True` if this operation was aborted for any reason.
   def is_aborted(self):
     return self.status() == STATUS_ABORTED
 
   ##
-  # Returns `True` if this job has completed or was aborted, and
+  # Returns `True` if this operation has completed or was aborted, and
   # `False` if it's currently pending or running.
   def is_done(self):
-    return self.client.call('job.done', self.uuid)
+    return self.client.call('operation.done', self.uuid)
 
   ##
-  # Returns the current status of this job.
+  # Returns the current status of this operation.
   def status(self):
-    return self.client.call('job.status', self.uuid)
+    return self.client.call('operation.status', self.uuid)
 
   ##
-  # Waits until this job is done.
+  # Waits until this operation is done.
   def wait(self, **kwargs):
     # TODO: timeout support
     delay = 0.5 # seconds
@@ -82,7 +82,7 @@ class Job(dydra.Resource):
     return self
 
   ##
-  # Aborts this job if it is currently pending or running.
+  # Aborts this operation if it is currently pending or running.
   def abort(self):
-    self.client.call('job.abort', self.uuid)
+    self.client.call('operation.abort', self.uuid)
     return self

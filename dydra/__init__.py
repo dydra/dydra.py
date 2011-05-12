@@ -8,5 +8,5 @@ from dydra.client     import Client
 from dydra.resource   import Resource
 from dydra.account    import Account
 from dydra.repository import Repository
+from dydra.operation  import Operation
 from dydra.query      import Query
-from dydra.job        import Job
