@@ -7,6 +7,7 @@ setup.py
 dydra/__init__.py
 dydra/account.py
 dydra/client.py
+dydra/operation.py
 dydra/query.py
 dydra/repository.py
 dydra/resource.py
